@@ -7,7 +7,7 @@
 CREATE TABLE IF NOT EXISTS "todos" (
   "id" uuid PRIMARY KEY,
   "description" varchar(3000),
-  "is_completed" INT
+  "is_completed" BOOLEAN
 );
 
 INSERT INTO todos (id, description, is_completed) VALUES ('49644ffe-498f-4b0b-974b-eb68c7f6db6f', 'Create a database', TRUE),
