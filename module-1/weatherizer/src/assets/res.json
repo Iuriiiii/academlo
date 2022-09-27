@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -68.1115,
+        "lat": -38.9433
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 285.07,
+        "feels_like": 283.54,
+        "temp_min": 285.07,
+        "temp_max": 285.07,
+        "pressure": 1014,
+        "humidity": 47
+    },
+    "visibility": 8000,
+    "wind": {
+        "speed": 0,
+        "deg": 0
+    },
+    "clouds": {
+        "all": 4
+    },
+    "dt": 1664151347,
+    "sys": {
+        "type": 1,
+        "id": 8310,
+        "country": "AR",
+        "sunrise": 1664101015,
+        "sunset": 1664145078
+    },
+    "timezone": -10800,
+    "id": 3843123,
+    "name": "Neuquén",
+    "cod": 200
+}
