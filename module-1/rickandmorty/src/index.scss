@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .bkface-visible {
+        backface-visibility: visible;
+    }
+
+    .bkface-hidden {
+        backface-visibility: hidden;
+    }
+
+    .perspective-0 {
+        -webkit-perspective: none;
+        perspective: none;
+    }
+
+    .perspective-600 {
+        -webkit-perspective: 600px;
+        perspective: 600px;
+    }
+
+    .perspective-1800 {
+        -webkit-perspective: 1800px;
+        perspective: 1800px;
+    }
+
+    .transform-3d {
+        transform-style: preserve-3d;
+    }
+
+    .rotate-y-180 {
+        transform: rotateY(180deg);
+    }
+
+    .-rotate-y-180 {
+        transform: rotateY(-180deg);
+    }
+}
