@@ -23,7 +23,7 @@ const Purchases = (props: Props) => {
         return <div className='w-full' key={purchase.id}>
             <span className='font-bold w-full'>{date.toLocaleString()}:</span>
             <ol className='list-disc'>
-                {purchase.cart.products.map(product => <li>{product.title} x {product.productsInCart.quantity} - ${product.productsInCart.quantity * product.price}</li>)}
+                {purchase.cart.products.map(product => <li>{product.title} x {product.productsInCart.quantity} - ${product.productsInCart.quantity * parseFloat(product.price)}</li>)}
             </ol>
         </div>;
     }
