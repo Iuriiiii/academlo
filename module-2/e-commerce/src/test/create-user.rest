@@ -1,0 +1,11 @@
+POST https://ecommerce-api-react.herokuapp.com/api/v1/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Mqax",
+    "lastName": "Ranqgel",
+    "email": "maqx@gmail.com",
+    "password": "pasqs1234",
+    "phone": "1234567891",
+    "role": "admin"
+}

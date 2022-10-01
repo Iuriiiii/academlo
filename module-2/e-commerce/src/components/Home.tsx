@@ -1,48 +1,78 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { IProduct, IResponse, TProducts } from '../models';
+import { useChecker, useComplex, useGlobal } from 'react-simplify';
+import { IFilter, IProduct, IResponse, TProducts } from '../models';
+import { BsFillCartPlusFill } from 'react-icons/bs';
+import { GrCircleInformation } from 'react-icons/gr';
+import categories from './../assets/categories.json';
+import noProductImg from '/no-product.png';
+import Product from './Product';
+import Content from './Content';
 
 interface Props { }
 
 const Home = (props: Props) => {
+    const [filter, setFilter] = useComplex<IFilter>({ category: 0, name: '' });
+    const [allProducts, setAllProducts] = useState<TProducts>([]);
     const [products, setProducts] = useState<TProducts>([]);
+    // const session = localStorage.getItem('session');
 
-    function Product(props: IProduct) {
-        return (
-            <div className='w-56 h-62 p-5 shadow-sm shadow-slate-900 hover:bg-slate-200'>
-                <div className="h-15">
-                    <h2 className='text-red-500 font-bold text-lg mb-5'>{props.title}</h2>
-                </div>
-                <div className='w-9/12 m-auto h-full my-3'>
-                    <img className='w-full h-48 object-contain' src={props.productImgs[0]} alt='product-image' />
-                </div>
-            </div>
-        );
-    }
+    useEffect(() => {
+        setProducts(allProducts);
+    }, [useChecker(allProducts)]);
+
+    useEffect(() => {
+        let listProducts = allProducts;
+
+        if (filter.category !== 0) {
+            listProducts = listProducts.filter(product => product.category.id === filter.category);
+        }
+
+        if (filter.name.length > 0) {
+            listProducts = listProducts.filter(product => product.title.includes(filter.name));
+        }
+
+        if (listProducts.length === 0)
+            listProducts.push({ title: 'Not Found', price: '10000.00', productImgs: [noProductImg], category: { id: 0, name: '', status: '' }, id: 0, status: 'active', user: { email: '', firstName: '', id: 0, lastName: '', phone: '', role: '', status: '' }, description: '' });
+
+        setProducts(listProducts);
+
+    }, [useChecker(filter)]);
+
+
 
     useEffect(() => {
         axios.get<IResponse>('https://ecommerce-api-react.herokuapp.com/api/v1/products')
-            .then(res => setProducts(res.data.data.products!))
+            .then(res => setAllProducts(res.data.data.products!))
             .catch(console.error);
     }, []);
 
-    function Content() {
-        if (products.length === 0) {
-            return (
-                <h2 className='text-2xl animate-bounce font-bold text-red-500'>Loading</h2>
-            );
+    function Selector() {
+        function selectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+            setFilter({ category: parseInt(e.target.value) });
         }
 
-        return <>
-            {
-                products.map(product => <Product {...product} />)
-            }
-        </>;
+        return <div className='w-56 h-62 p-5 shadow-sm shadow-slate-900 hover:bg-slate-200 flex justify-center items-center flex-col'>
+            <label>
+                Title:
+                <input value={filter.name} className='w-full border-b-2 border-black' type='text' autoFocus onChange={(e) => setFilter({ name: e.target.value })} />
+            </label><br />
+            <label>
+                Category:
+                <select value={filter.category} onChange={selectChange} className='w-full border-b-2 border-black'>
+                    <option key={0} value='0'>All</option>
+                    {
+                        categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)
+                    }
+                </select>
+            </label>
+        </div>
     }
 
     return (
         <>
-            <Content />
+            <Selector />
+            <Content products={products} />
         </>
     )
 }

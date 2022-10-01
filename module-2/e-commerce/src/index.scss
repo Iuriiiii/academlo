@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button.group[data-testid="carousel-right-control"] span {
+    color: black;
+    background-color: black;
+}
+
+button.group[data-testid="carousel-left-control"] span {
+    color: black;
+    background-color: black;
+}
+
+button.group[data-testid="carousel-right-control"]:hover span {
+    color: black;
+    background-color: black;
+    transform: scale(1.1);
+}
+
+button.group[data-testid="carousel-left-control"]:hover span {
+    color: black;
+    background-color: black;
+    transform: scale(1.1);
+}

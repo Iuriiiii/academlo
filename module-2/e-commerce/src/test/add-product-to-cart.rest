@@ -1,0 +1,8 @@
+POST https://ecommerce-api-react.herokuapp.com/api/v1/cart HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY0NTYwNjA4LCJleHAiOjE2Njk3NDQ2MDh9.Yfic8g6xff2JrkSVdBV5ngYdBYeAC_ImaqYMKaXgGfk
+
+{
+    "id": 1,
+    "quantity": 3
+}
