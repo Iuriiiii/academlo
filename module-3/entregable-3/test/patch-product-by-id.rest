@@ -1,0 +1,6 @@
+PATCH http://localhost:4000/products/28a0e326-c22e-48f8-ac0c-a80e2371c718 HTTP/1.0
+Content-Type: application/json
+
+{
+    "name": "Muestren las patas"
+}

@@ -1,0 +1,5 @@
+GET http://localhost:4000/products/8ad0204a-6ab8-4a95-9681-4a4120171d2c HTTP/1.0
+Content-Type: application/json
+
+{
+}

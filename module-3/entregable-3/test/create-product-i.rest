@@ -1,0 +1,9 @@
+POST http://localhost:4000/products HTTP/1.0
+Content-Type: application/json
+
+{
+    "name": "Gaseosa con Jugo",
+    "category": "Veneno",
+    "price": 10000,
+    "isAvailable": true
+}
